@@ -74,15 +74,16 @@ class MCServerQueryPlugin(BasePlugin):
     async def send_chat_message(self, message: str):
         """
         Send a chat message to the Minecraft server.
-
+    
         Args:
-            message (str): The message to send.
-
+            message (str): The message to send to the server.
+    
         Returns:
-            str: A confirmation message.
+            str: A confirmation message indicating whether the message was sent successfully.
         """
         response = await self.send_command("SendText", [message])
         return "Message sent successfully" if response.get("success") else "Failed to send message"
+
 
     def __del__(self):
         if self.ws:
